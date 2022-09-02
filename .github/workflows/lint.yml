@@ -3,6 +3,7 @@ on: [workflow_dispatch]
 jobs:
   run-lint:
     name: 'lint'
+    runs-on: ubuntu-latest
     steps:
       - name: 'Git checkout'
         uses: actions/checkout@v2
