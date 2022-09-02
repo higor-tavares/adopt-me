@@ -1,3 +1,4 @@
+/* global React ReactDOM */
 const Pet = (props) => {
   return React.createElement("div", {}, [
     React.createElement("h1", {}, props.name),
@@ -18,5 +19,4 @@ const App = () => {
     }),
   ]);
 };
-
 ReactDOM.render(React.createElement(App), document.getElementById("root"));
