@@ -1,0 +1,23 @@
+{
+  "name": "adopt-me",
+  "version": "1.0.0",
+  "description": "This is a simple react project to learn proposites this is a project made by the course ``Complete Intro to React, V7``",
+  "main": "index.js",
+  "scripts": {
+    "format": "prettier --write \"src/**/*.{js,jsx}\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/higor-tavares/adopt-me.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/higor-tavares/adopt-me/issues"
+  },
+  "homepage": "https://github.com/higor-tavares/adopt-me#readme",
+  "devDependencies": {
+    "prettier": "^2.7.1"
+  }
+}
