@@ -9,10 +9,12 @@ const App = () => {
   return (
     <StrictMode>
       <BrowserRouter>
-        <Link to="/"><h1 id="brand">Adopt Me!</h1></Link>
+        <header>
+          <Link to="/">Adopt Me!</Link>
+        </header>
         <Routes>
-          <Route path="details/:id" element={<Details/>} />
-          <Route path="/" element={<SearchParams/>} />
+          <Route path="details/:id" element={<Details />} />
+          <Route path="/" element={<SearchParams />} />
         </Routes>
       </BrowserRouter>
     </StrictMode>
