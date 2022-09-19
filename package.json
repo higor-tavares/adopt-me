@@ -21,6 +21,8 @@
   },
   "homepage": "https://github.com/higor-tavares/adopt-me#readme",
   "devDependencies": {
+    "@babel/core": "^7.19.1",
+    "@babel/plugin-proposal-class-properties": "^7.16.7",
     "eslint": "8.8.0",
     "eslint-config-prettier": "8.3.0",
     "eslint-plugin-import": "^2.25.4",
