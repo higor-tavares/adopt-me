@@ -13,7 +13,7 @@ const App = () => {
           <Link to="/">Adopt Me!</Link>
         </header>
         <Routes>
-          <Route path="details/:id" element={<WrapDetails />} />
+          <Route path="/details/:id" element={<WrapDetails />} />
           <Route path="/" element={<SearchParams />} />
         </Routes>
       </BrowserRouter>

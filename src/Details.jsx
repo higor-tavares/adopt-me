@@ -1,13 +1,19 @@
 import { React, Component } from "react";
 import { useParams } from "react-router-dom";
 import Carousel from "./Carousel";
+import ErrorBoundary from "./ErrorBoundary";
 class Details extends Component {
-  
-  state = { loading: true };
+  state = { loading: true , hasError: false};
 
-  async componentDidMount() {
+  componentDidMount() {
+    this.fetchData()
+    .catch((e)=> {
+      this.setState(Object.assign({ loading: false , hasError: true}));
+    });
+  }
+   fetchData = async () => {
     const res = await fetch(
-      `http://pets-v2.dev-apis.com/pets?id=${this.props.params.id}`
+      `http://pets-v2.dev-apis.com/petsuu?id=${this.props.params.id}`
     );
     const json = await res.json();
     this.setState(Object.assign({ loading: false }, json.pets[0]));
@@ -16,10 +22,14 @@ class Details extends Component {
     if (this.state.loading) {
       return <h2>loading ...</h2>;
     }
-    const { animal, breed, city, state, description, name, images} = this.state;
+    if(this.state.hasError){
+      throw new Error("aaa")
+    }
+    const { animal, breed, city, state, description, name, images } =
+      this.state;
     return (
       <div className="details">
-        <Carousel images={images}/>
+        <Carousel images={images} />
         <div>
           <h1>{name}</h1>
           <h2>
@@ -35,6 +45,10 @@ class Details extends Component {
 
 const WrapDetails = () => {
   const params = useParams();
-  return <Details params={params} />;
+  return (
+    <ErrorBoundary>
+      <Details params={params} />
+    </ErrorBoundary>
+  );
 };
 export default WrapDetails;
