@@ -1,10 +1,10 @@
-import { React, Component } from "react";
+import { React, Component, useContext} from "react";
 import { useParams } from "react-router-dom";
 import Carousel from "./Carousel";
 import ErrorBoundary from "./ErrorBoundary";
+import ThemeContext from "./ThemeContext";
 class Details extends Component {
   state = { loading: true , hasError: false};
-
   componentDidMount() {
     this.fetchData()
     .catch((e)=> {
@@ -13,7 +13,7 @@ class Details extends Component {
   }
    fetchData = async () => {
     const res = await fetch(
-      `http://pets-v2.dev-apis.com/petsuu?id=${this.props.params.id}`
+      `http://pets-v2.dev-apis.com/pets?id=${this.props.params.id}`
     );
     const json = await res.json();
     this.setState(Object.assign({ loading: false }, json.pets[0]));
@@ -35,7 +35,7 @@ class Details extends Component {
           <h2>
             {animal} - {breed} - {city} , {state}
           </h2>
-          <button>Adopt {name}</button>
+          <button style={{backgroundColor: this.props.theme}}>Adopt {name}</button>
           <p>{description}</p>
         </div>
       </div>
@@ -45,9 +45,10 @@ class Details extends Component {
 
 const WrapDetails = () => {
   const params = useParams();
+  const [theme,setTheme] = useContext(ThemeContext)
   return (
     <ErrorBoundary>
-      <Details params={params} />
+      <Details params={params} theme={theme}/>
     </ErrorBoundary>
   );
 };
